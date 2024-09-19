@@ -1,0 +1,25 @@
+.button {
+  width: 100%;
+  height: 51px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 500;
+  padding: 1rem, 1.5rem, 1rem, 1.5rem;
+}
+
+.normalButton {
+  background: linear-gradient(90deg, #0796D3 0%, #53C0F0 68.65%);
+  color: hsla(0, 0%, 100%, 1);
+}
+
+.lightButton {
+  background: hsla(220, 73%, 95%, 1);
+  color: hsla(0, 0%, 0%, 1);
+}
+
+.cancelButton {
+  background: linear-gradient(90deg, #0796D3 0%, #53C0F0 68.65%);
+  color: hsla(0, 0%, 100%, 1);
+}
+
+
