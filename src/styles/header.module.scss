@@ -10,6 +10,13 @@
   gap: .5rem;
   border-bottom: 1px solid hsla(220, 29%, 88%, 1);
   padding: 0 0 1.5rem 0;
+
+  @media screen and (min-width: 768px) {
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    padding: 1.5rem 2rem;
+  }
 }
 
 .welcomeTitle { 
