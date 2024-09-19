@@ -2,6 +2,7 @@
 import React from 'react'
 import Button from './Button'
 import useNavigateRoute from '@/hooks/useNavigateRoute'
+import { useAppContext } from '../ContextProvider'
 
 type DeleteButtonProps = {
   taskId: string
@@ -10,15 +11,21 @@ type DeleteButtonProps = {
 function DeleteButton(props: DeleteButtonProps) {
   const { taskId } = props
   const { navigate } = useNavigateRoute()
+  const { openModalDeleteTask, updateTasks } = useAppContext()
 
   const handleClick = () => {
-    const tarks = JSON.parse(localStorage.getItem('tasks') || "[]")
+    const tasks = JSON.parse(localStorage.getItem('tasks') || "[]")
 
-    const newTasks = tarks.filter((task: { id: string }) => task.id !== taskId)
+    const newTasks = tasks.filter((task: { id: string }) => task.id !== taskId)
 
     localStorage.setItem('tasks', JSON.stringify(newTasks))
 
-    navigate('/')
+    if (window.innerWidth > 768) {
+      openModalDeleteTask();
+      updateTasks([...newTasks])
+    } else {
+      navigate('/')
+    } 
   };
 
   return (
