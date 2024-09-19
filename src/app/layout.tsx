@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "../styles/globals.scss";
+import { ContextProvider } from "@/components/ContextProvider";
 
 
 export const metadata: Metadata = {
@@ -13,10 +14,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-        <body >
+    <html lang="pt">
+      <ContextProvider>
+        <body>
           {children}
         </body>
+      </ContextProvider>
     </html>
   );
 }
