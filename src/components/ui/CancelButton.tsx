@@ -1,18 +1,11 @@
 "use client"
-import useNavigateRoute from '@/hooks/useNavigateRoute';
 import React from 'react'
 import Button from './Button';
 
-function CancelButton() {
-
-  const { navigate } = useNavigateRoute()
-
-  const handleClick = () => {
-    navigate('/')
-  };
+function CancelButton( props: React.ButtonHTMLAttributes<HTMLButtonElement> ) {
 
   return (
-    <Button buttonType='light' onClick={handleClick}>Cancelar</Button>
+    <Button {...props} buttonType='light' type="button">Cancelar</Button>
   )
 }
 
