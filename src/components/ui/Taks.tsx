@@ -6,6 +6,7 @@ import checkBoxChecked from "@/assets/checkbox-checked.svg"
 import trash from "@/assets/trash.svg"
 import style from '@/styles/tasks.module.scss'
 import { useRouter } from 'next/navigation'
+import { useAppContext } from '../ContextProvider'
 
 type TaskProps = {
   checked: boolean,
@@ -16,11 +17,19 @@ type TaskProps = {
 
 function Taks(props: TaskProps) {
   const { checked, description, taskId, handleClickCheckTask } = props
+  const { openModalDeleteTask, setTaskToDelete } = useAppContext()
 
   const router = useRouter();
 
   const handleClickDeleteTask = () => {
-    router.push(`/task/delete/${taskId}`);
+
+    if (window.innerWidth > 768) {
+      openModalDeleteTask();
+      setTaskToDelete(taskId);
+    } else {
+      router.push(`/task/delete/${taskId}`);
+    } 
+
   };
 
   const handleClickCheckboxTask = () => {
