@@ -1,10 +1,30 @@
 @import 'variables.module.scss';
 
+.newTaskTitle {
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin-bottom: 1rem;
+  font-family: $default-font-family;
+}
+
+.formWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+}
+
+
 .buttonWrapper {
   display: flex;
   justify-content: center;
   flex-direction: column;
   gap: 10px;
+  width: 100%;
+
+  @media screen and (min-width: 768px) {
+    flex-direction: row;
+  }
 }
 
 .inputLabel {
