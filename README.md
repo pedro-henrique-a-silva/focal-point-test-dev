@@ -22,12 +22,12 @@ Este é um projeto de um Gerenciador de Tarefas feito com Next.js, que permite c
 
 Clone este repositório:
 ```bash
-git clone https://github.com/seu-usuario/gerenciador-tarefas.git
+git clone git@github.com:pedro-henrique-a-silva/focal-point-test-dev.git
 ```
 Instale as dependências:
 
 ```bash
-cd gerenciador-tarefas
+cd focal-point-test-dev
 npm install
 ```
 
