@@ -1,26 +1,25 @@
 "use client"
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import style from '@/styles/tasks.module.scss'
 import Tasks from '@/components/ui/Taks'
-import { TaskType } from '@/types/task'
+import { useAppContext } from './ContextProvider'
+import NewTaskModal from './NewTaskModal'
+import DeleteTaskModal from './DeleteTaskModal'
 
 function TaskList() {
-  const [tasks, setTasks] = useState<TaskType[]>([])
+  const {
+    tasks,
+    isModalNewTaskOpen,
+    isModalDeleteTaskOpen,
+    handleClickCheckTask,
+    updateTasks
+  } = useAppContext()
 
-  const handleClickCheckTask = (taskId: string) => {
-    tasks.map((task) => {
-      if (task.id === taskId) {
-        task.completed = !task.completed
-      }
-    })
-
-    setTasks([...tasks])
-  }
   
   useEffect(() => {
-    const tasks = JSON.parse(localStorage.getItem('tasks') || "[]")
-    if (tasks) {
-      setTasks(tasks)
+    const tasksFromLocalStorage = JSON.parse(localStorage.getItem('tasks') || "[]")
+    if (tasksFromLocalStorage) {
+      updateTasks(tasksFromLocalStorage)
     }
   }, [])
   
@@ -49,7 +48,8 @@ function TaskList() {
           handleClickCheckTask={handleClickCheckTask}
         />
       })}
-     
+     {isModalNewTaskOpen && <NewTaskModal />}
+     {isModalDeleteTaskOpen && <DeleteTaskModal />}
     </>
   )
 }
