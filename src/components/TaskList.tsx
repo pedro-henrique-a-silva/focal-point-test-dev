@@ -1,7 +1,7 @@
 "use client"
 import React, { useEffect } from 'react'
 import style from '@/styles/tasks.module.scss'
-import Tasks from '@/components/ui/Taks'
+import Task from '@/components/ui/Task'
 import { useAppContext } from './ContextProvider'
 import NewTaskModal from './NewTaskModal'
 import DeleteTaskModal from './DeleteTaskModal'
@@ -30,7 +30,7 @@ function TaskList() {
     <>
       <h1 className={style.tasksTitle}>Suas tarefas de hoje</h1>
       {tasksNotCompleted.map((task) => {
-        return <Tasks 
+        return <Task 
           key={task.id} 
           taskId={task.id} 
           checked={task.completed} 
@@ -40,7 +40,7 @@ function TaskList() {
       })}
       <h1 className={style.tasksTitleTasksFinished}>Tarefas finalizadas</h1>
       {tasksCompleted.map((task) => {
-        return <Tasks 
+        return <Task 
           key={task.id} 
           taskId={task.id} 
           checked={task.completed} 

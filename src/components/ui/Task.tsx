@@ -15,7 +15,7 @@ type TaskProps = {
   handleClickCheckTask: (taskId: string) => void
 }
 
-function Taks(props: TaskProps) {
+function Task(props: TaskProps) {
   const { checked, description, taskId, handleClickCheckTask } = props
   const { openModalDeleteTask, setTaskToDelete } = useAppContext()
 
@@ -53,4 +53,4 @@ function Taks(props: TaskProps) {
   )
 }
 
-export default Taks
+export default Task
