@@ -5,9 +5,11 @@ import style from '@/styles/newTaskForm.module.scss'
 import Input from './ui/Input'
 import useNavigateRoute from '@/hooks/useNavigateRoute'
 import CancelButton from './ui/CancelButton'
+import { useAppContext } from './ContextProvider'
 
 function NewTaskForm() {
   const [description, setDescription] = useState('');
+  const { openModalNewTask, updateTasks } = useAppContext()
 
   const { navigate } = useNavigateRoute()
 
@@ -24,7 +26,12 @@ function NewTaskForm() {
 
     localStorage.setItem('tasks', JSON.stringify([...tasks, newTask]))
 
-    navigate('/')
+    if (window.innerWidth > 768) {
+      openModalNewTask();
+      updateTasks([...tasks, newTask])
+    } else {
+      navigate('/')
+    } 
   }
 
 
@@ -33,8 +40,19 @@ function NewTaskForm() {
     insertNewTask(description);
   }
 
+  const handleClick = () => {
+    if (window.innerWidth > 768) {
+      openModalNewTask();
+    } else {
+      navigate('/')
+    } 
+  };
+  
+
   return (
-    <form onSubmit={handleSubmit}>
+    <>
+    <h1 className={style.newTaskTitle}>Nova Tarefa</h1>
+    <form className={style.formWrapper} onSubmit={handleSubmit}>
       <label className={style.inputLabel} htmlFor="new-task">Titulo</label>
       <Input 
         id='new-task' 
@@ -44,9 +62,10 @@ function NewTaskForm() {
       />
       <div className={style.buttonWrapper}>
         <Button type="submit">Adicionar</Button>
-        <CancelButton />
+        <CancelButton onClick={handleClick} />
       </div>
     </form>
+  </>
   )
 }
 
