@@ -1,29 +1,45 @@
+"use client"
 import Image from 'next/image'
 import React from 'react'
 import checkBox from "@/assets/checkbox.svg"
 import checkBoxChecked from "@/assets/checkbox-checked.svg"
 import trash from "@/assets/trash.svg"
 import style from '@/styles/tasks.module.scss'
+import { useRouter } from 'next/navigation'
 
 type TaskProps = {
   checked: boolean,
-  description: string
+  description: string,
+  taskId: string,
+  handleClickCheckTask: (taskId: string) => void
 }
 
 function Taks(props: TaskProps) {
-  const { checked, description } = props
+  const { checked, description, taskId, handleClickCheckTask } = props
+
+  const router = useRouter();
+
+  const handleClickDeleteTask = () => {
+    router.push(`/task/delete/${taskId}`);
+  };
+
+  const handleClickCheckboxTask = () => {
+    handleClickCheckTask(taskId)
+  }
 
   return (
     <div className={style.task}>
       <Image
+        onClick={handleClickCheckboxTask}
         src={checked ? checkBoxChecked : checkBox}
         alt='Imagem de uma tarefa'
       />
       <p className={checked ? style.taskNameFinished : style.taskName}>{description}</p>
       <Image
         src={trash}
+        onClick={handleClickDeleteTask}
         alt='Imagem de uma tarefa'
-      />
+        />
     </div>
   )
 }
