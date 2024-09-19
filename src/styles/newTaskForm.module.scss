@@ -1,0 +1,16 @@
+@import 'variables.module.scss';
+
+.buttonWrapper {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.inputLabel {
+  display: inline-block;
+  font-size: $default-font-size;
+  font-family: $default-font-family;
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
