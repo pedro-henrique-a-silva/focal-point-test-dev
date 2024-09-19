@@ -1,0 +1,38 @@
+@import "variables.module.scss";
+
+.tasksTitle {
+  font-family: $default-font-family;
+  font-weight: 400;
+  color: hsla(0, 0%, 0%, 0.54);
+  margin-bottom: 1rem;
+}
+
+.tasksTitleTasksFinished {
+  font-family: $default-font-family;
+  font-weight: 400;
+  color: hsla(0, 0%, 0%, 0.54);
+  margin-bottom: 1rem;
+}
+
+.task {
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem .5rem;
+  border: 1px dashed hsla(220, 29%, 88%, 1);
+  border-radius: 8px;
+  margin-bottom: .5rem;
+}
+
+.taskName {
+  font-family: $default-font-family;
+  font-weight: 400;
+}
+
+.taskNameFinished {
+  font-family: $default-font-family;
+  font-weight: 400;
+  text-decoration: line-through;
+}
